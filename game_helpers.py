@@ -1,9 +1,9 @@
 def game_actions(action, playing_player, other_plyer):
     if action in playing_player.list_of_weapons():
         other_plyer.take_damage(playing_player.use_weapon(action))
-    elif action == "attack":
+    elif action == "a":
         other_plyer.take_damage(playing_player.attack())
-    elif action == "heal":
+    elif action == "h":
         playing_player.heal()
     elif action == "x":
         exit()
