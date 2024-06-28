@@ -1,15 +1,6 @@
 from fighter import Fighter
 from bot_fighter import BotFighter
-
-def game_actions(action, playing_player, other_plyer):
-    if action in playing_player.list_of_weapons():
-        other_plyer.take_damage(playing_player.use_weapon(action))
-    elif action == "attack":
-        other_plyer.take_damage(playing_player.attack())
-    elif action == "heal":
-        playing_player.heal()
-    else:
-        print(f"action {action} is invalid!")
+import game_helpers
 
 def game_loop(you, enemy):
     base_actions = ["attack", "heal"]
@@ -23,11 +14,11 @@ def game_loop(you, enemy):
         else:
             command = f"Choose action: Attack (attack) or Heal (heal): "
         action = input(command).lower()
-        game_actions(action, you, enemy)
+        game_helpers.game_actions(action, you, enemy)
 
         enemey_action = enemy.choose_action(base_actions + enemy.list_of_weapons())
         print(f"Enemey used {enemey_action}!")
-        game_actions(enemey_action, enemy, you)
+        game_helpers.game_actions(enemey_action, enemy, you)
 
         if not you.is_alive():
             print(f"{you.name} is dead! Oh no!")
