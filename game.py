@@ -7,6 +7,7 @@ def game_loop(*, you, enemy):
     while you.is_alive() and enemy.is_alive():
         print(f"{you.name} Health: {you.health}")
         print(f"{enemy.name} Health: {enemy.health}")
+        print(f"Let's GO! (type 'x' to exit)")
 
         list_of_weapons_len = len(you.list_of_weapons())
         if list_of_weapons_len > 0:
@@ -17,7 +18,7 @@ def game_loop(*, you, enemy):
         game_helpers.game_actions(action, you, enemy)
 
         enemey_action = enemy.choose_action(base_actions + enemy.list_of_weapons())
-        print(f"Enemey used {enemey_action}!")
+        print(f"Enemey used {game_helpers.translate_attack(enemey_action)}!")
         game_helpers.game_actions(enemey_action, enemy, you)
 
         if not you.is_alive():
@@ -26,10 +27,10 @@ def game_loop(*, you, enemy):
             print(f"{enemy.name} is dead! You did it!")
 
 def main():
-    weapons = { "brick": 20, "ninja star": 10 }
-    kevin = Fighter("Kevin", 100, weapons.copy())
-    bad_guy = BotFighter("Bad Guy", 100, weapons.copy())
-    game_loop(you=kevin, enemy=bad_guy)
+    my_name, enemy_name, hp, weapons = game_helpers.initialize_game()
+    me = Fighter(my_name, hp, weapons.copy())
+    enemy = BotFighter(enemy_name, hp, weapons.copy())
+    game_loop(you=me, enemy=enemy)
 
 if __name__ == "__main__":
     main()
