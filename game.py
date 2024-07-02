@@ -18,7 +18,7 @@ def game_loop(*, you, enemy):
         game_helpers.game_actions(action, you, enemy)
 
         enemey_action = enemy.choose_action(base_actions + enemy.list_of_weapons())
-        print(f"Enemey used {game_helpers.translate_attack(enemey_action)}!")
+        print(f"Enemey used {game_helpers.action_translator(enemey_action)}!")
         game_helpers.game_actions(enemey_action, enemy, you)
 
         if not you.is_alive():

@@ -36,7 +36,7 @@ def validate_int(command, ceiling=None):
         except ValueError:
             print(f"{value} is not a number. Try again.")
 
-def translate_attack(command):
+def action_translator(command):
     match command:
         case "a":
             return "Attack"
