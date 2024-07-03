@@ -2,7 +2,7 @@ from fighter import Fighter
 from bot_fighter import BotFighter
 import game_helpers
 
-def game_loop(*, you, enemy):
+def game_loop(*, you, enemy) -> None:
     base_actions = ["a", "h"]
     while you.is_alive() and enemy.is_alive():
         print(f"{you.name} Health: {you.health}")
@@ -26,7 +26,7 @@ def game_loop(*, you, enemy):
         elif not enemy.is_alive():
             print(f"{enemy.name} is dead! You did it!")
 
-def main():
+def main() -> None:
     my_name, enemy_name, hp, weapons = game_helpers.initialize_game()
     me = Fighter(my_name, hp, weapons.copy())
     enemy = BotFighter(enemy_name, hp, weapons.copy())

@@ -1,4 +1,4 @@
-def initialize_game():
+def initialize_game() -> tuple:
     your_name = input("What's your name? ")
     enemy_name = input("What's your enemy's name? ")
     hp = validate_int("How much health should each player have? ")
@@ -10,7 +10,7 @@ def initialize_game():
         weapons[weapon_name] = weapon_power
     return your_name, enemy_name, hp, weapons
 
-def game_actions(action, playing_player, other_plyer):
+def game_actions(action, playing_player, other_plyer) -> None:
     if action in playing_player.list_of_weapons():
         other_plyer.take_damage(playing_player.use_weapon(action))
     elif action == "a":
@@ -22,7 +22,7 @@ def game_actions(action, playing_player, other_plyer):
     else:
         print(f"action {action} is invalid!")
 
-def validate_int(command, ceiling=None):
+def validate_int(command, ceiling=None) -> int:
     while True:
         try:
             value = input(command)
@@ -36,7 +36,7 @@ def validate_int(command, ceiling=None):
         except ValueError:
             print(f"{value} is not a number. Try again.")
 
-def action_translator(command):
+def action_translator(command) -> str:
     match command:
         case "a":
             return "Attack"

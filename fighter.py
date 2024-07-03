@@ -25,7 +25,7 @@ class Fighter:
     def list_of_weapons(self) -> list:
         return list(self.weapons.keys())
     
-    def use_weapon(self, weapon):
+    def use_weapon(self, weapon) -> int:
         damage = self.weapons[weapon]
         self.weapons.pop(weapon)
         return damage
