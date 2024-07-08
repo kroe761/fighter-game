@@ -13,11 +13,10 @@ class Fighter:
         self.health -= damage
 
     def heal(self) -> None:
-        amount = random.randint(1, 15)
-        self.health += amount
+        self.health += random.randint(5, 15)
 
     def attack(self) -> int:
-        return random.randint(1, 15)
+        return random.randint(5, 15)
 
     def is_alive(self) -> bool:
         return self.health > 0
